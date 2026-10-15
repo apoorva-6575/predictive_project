@@ -29,10 +29,10 @@ or open the notebook in Jupyter / VS Code / Kaggle and run all cells (about 1 mi
 4. Features: `hr`, `weekday`, `mnth`, `weathersit` (one-hot), `hr x workingday` interaction, `yr`, `holiday`, `workingday`, `temp`, `hum`, `windspeed` (scaled). Excluded: `cnt`, `casual`, `registered` (sum to `cnt`, target leakage), `instant`, `dteday`, `atemp` (collinear with `temp`), `season` (redundant with month).
 5. Chronological split on whole days: first 80 % train (2011-01-01 to 2012-08-06), last 20 % test (2012-08-07 to 2012-12-31). Preprocessing is fitted on training rows only (asserted in the notebook). Both models use the same split and the same transformed features.
 6. Poisson `alpha` tuned by `TimeSeriesSplit` CV on the training data only (alpha = 1).
-7. Metrics: MAE, RMSE, RÂ², Poisson deviance. Diagnostics: negative predictions, overdispersion, residual autocorrelation, calibration by prediction band.
+7. Metrics: MAE, RMSE, R², Poisson deviance. Diagnostics: negative predictions, overdispersion, residual autocorrelation, calibration by prediction band.
 
 ## Results (held-out test set, 3,488 hours)
-| Model | MAE | RMSE | RÂ² | Mean Poisson deviance |
+| Model | MAE | RMSE | R² | Mean Poisson deviance |
 |---|---|---|---|---|
 | Linear Regression | 79.49 | 106.93 | 0.765 | undefined (14 negative predictions) |
 | Poisson Regression | 58.91 | 81.15 | 0.865 | 28.18 |
